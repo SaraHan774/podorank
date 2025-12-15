@@ -1,0 +1,22 @@
+{
+  "$schema": "https://schema.railpack.com",
+  "packages": {
+    "node": "18"
+  },
+  "steps": {
+    "install": {
+      "commands": ["npm ci"]
+    },
+    "build-shared": {
+      "inputs": [{ "step": "install" }],
+      "commands": ["npm run build -w packages/shared"]
+    },
+    "build-backend": {
+      "inputs": [{ "step": "build-shared" }],
+      "commands": ["npm run build -w packages/backend"]
+    }
+  },
+  "deploy": {
+    "startCommand": "npm run start -w packages/backend"
+  }
+}
