@@ -5,15 +5,15 @@
   },
   "steps": {
     "install": {
-      "commands": ["cd ../.. && npm ci"]
+      "commands": ["npm ci --prefix ../.."]
     },
     "build-shared": {
       "inputs": [{ "step": "install" }],
-      "commands": ["cd ../.. && npm run build -w packages/shared"]
+      "commands": ["npm run build --prefix ../.. -w packages/shared"]
     },
     "build-backend": {
       "inputs": [{ "step": "build-shared" }],
-      "commands": ["cd ../.. && npm run build -w packages/backend"]
+      "commands": ["npm run build --prefix ../.. -w packages/backend"]
     }
   },
   "deploy": {
